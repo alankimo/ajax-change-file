@@ -1,2 +1,2 @@
-# ajax-change-file
-AJAX detect when a txt file change and update the string
+# AJAX detect when a file change.
+ajax.open("POST", "result.txt", true); => cambiar 'result.txt' por el nombre del txt.
