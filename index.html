@@ -8,14 +8,15 @@
 	</head>
 	<body>
 
-		<section id="box">
-			<div class="title">
-				<span></span><i>Resultado</i><span></span>
+		<section id="box">		
+			<div id="head-table">
+				<div class="placa">Placa</div>
+				<div class="estado">Estado</div>
+				<div class="fecha">Fecha</div>
+				<div class="clear"></div>
 			</div>
-			<div id="number"></div>
-			<div class="graph">
-				<img src="car.svg">
-			</div>
+
+			<div id="body-table"></div>
 		</section>
 
 		<script>
@@ -28,8 +29,18 @@
 			            if (ajax.responseText != string_txt) {
 			                // Debugg
 			                //console.log('file changed => ' + ajax.responseText);
-			                $('#number').html('<span class="animated fadeIn">' + ajax.responseText + '</span>');
 			                string_txt = ajax.responseText;
+			                array_s = ajax.responseText.split('|');
+			                //array_s = array_s.reverse();
+
+			                $('#body-table').empty();
+
+			                for (var i = 0; i < array_s.length; i++) {
+			                	console.log('cicle: ' + i);
+			                	single_data = array_s[i].split(',');
+			                	$('#body-table').prepend('<div class="item animated fadeIn"> <div class="placa">' + single_data[0] + '</div><div class="estado">' + single_data[1] + '</div><div class="fecha">' + single_data[2] + '</div><div class="clear"></div> </div>');
+			                }
+
 			            }
 			        }
 			    };
